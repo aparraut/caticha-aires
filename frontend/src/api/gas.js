@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyy_43050krzygyXyo5OWT26LTdgZ54o49xLKXlHCTqPf7HUj3tXbLHqTo_zxfrdQCikw/exec';
+const GAS_URL = import.meta.env.VITE_GAS_URL;
 
 /**
  * Submit a service request to the GAS backend.
