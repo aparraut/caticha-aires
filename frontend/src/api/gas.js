@@ -38,7 +38,21 @@ export const getRequests = async () => {
  * For now, we manually manage via sheet if GAS doesn't support PATCH yet.
  */
 export const updateStatus = async (id, status) => {
-  // GAS backend might need a specific action parameter for this.
-  // We'll stick to GET/POST for now as per current GAS code.
-  console.warn('Update status not fully implemented in GAS backend yet.');
+  try {
+    const payload = {
+      action: 'updateStatus',
+      id: id,
+      status: status
+    };
+    
+    const response = await axios.post(GAS_URL, JSON.stringify(payload), {
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating status:', error);
+    throw error;
+  }
 };
