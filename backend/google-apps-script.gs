@@ -63,6 +63,30 @@ function doPost(e) {
       contents.description,
       status
     ]);
+
+    // Send email notification to technician
+    const technicianEmail = 'aparra.qa@gmail.com';
+    const emailSubject = `🔔 Nueva Solicitud: ${contents.service} en ${contents.zone}`;
+    const emailBody = `
+      Hola, se ha registrado una nueva solicitud de servicio:
+      
+      - Cliente: ${contents.name}
+      - WhatsApp: ${contents.whatsapp}
+      - Zona: ${contents.zone}
+      - Servicio: ${contents.service}
+      - Descripción: ${contents.description}
+      
+      Fecha y hora: ${date}
+      
+      Puedes gestionarlo desde el panel de control: 
+      https://caticha-aires.vercel.app/admin
+    `;
+
+    try {
+      MailApp.sendEmail(technicianEmail, emailSubject, emailBody);
+    } catch (mailError) {
+      console.error('Error sending email:', mailError);
+    }
     
     return ContentService.createTextOutput(JSON.stringify({
       status: 'success',

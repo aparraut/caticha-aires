@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Lock, Search, RefreshCw, MessageCircle, Clock, MapPin, User, ChevronRight, Hash, LogOut } from 'lucide-react';
+import { Lock, Search, RefreshCw, MessageCircle, Clock, MapPin, User, ChevronRight, Hash, LogOut, Wind } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getRequests } from '../api/gas';
 
